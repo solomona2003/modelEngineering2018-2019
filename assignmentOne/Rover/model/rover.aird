@@ -32,6 +32,15 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_eoBa8cwSEeihKfr6CUARQw" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eoBa8swSEeihKfr6CUARQw" x="216" y="84" width="120" height="100"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_5d_iYMwTEeihKfr6CUARQw" type="2003" element="_5dxf8MwTEeihKfr6CUARQw">
+          <children xmi:type="notation:Node" xmi:id="_5eAJcMwTEeihKfr6CUARQw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_5eAwgMwTEeihKfr6CUARQw" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_5eAwgcwTEeihKfr6CUARQw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_5eAwgswTEeihKfr6CUARQw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_5d_iYcwTEeihKfr6CUARQw" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5d_iYswTEeihKfr6CUARQw" x="444" y="108" width="120" height="100"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_ieTa4swQEeihKfr6CUARQw"/>
       </data>
     </ownedAnnotationEntries>
@@ -39,6 +48,14 @@
       <target xmi:type="ecore:EClass" href="rover.ecore#//NewEClass1"/>
       <semanticElements xmi:type="ecore:EClass" href="rover.ecore#//NewEClass1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_engdkMwSEeihKfr6CUARQw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_5dxf8MwTEeihKfr6CUARQw" name="NewEClass2" tooltipText="" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="rover.ecore#//NewEClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="rover.ecore#//NewEClass2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_5dyuEMwTEeihKfr6CUARQw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>

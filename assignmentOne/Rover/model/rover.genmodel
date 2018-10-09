@@ -9,5 +9,6 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Rover" disposableProviderFactory="true" ecorePackage="rover.ecore#/">
     <genClasses ecoreClass="rover.ecore#//NewEClass1"/>
+    <genClasses ecoreClass="rover.ecore#//NewEClass2"/>
   </genPackages>
 </genmodel:GenModel>
