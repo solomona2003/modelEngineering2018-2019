@@ -7,5 +7,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>rover.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Rover" disposableProviderFactory="true" ecorePackage="rover.ecore#/"/>
+  <genPackages prefix="Rover" disposableProviderFactory="true" ecorePackage="rover.ecore#/">
+    <genClasses ecoreClass="rover.ecore#//NewEClass1"/>
+  </genPackages>
 </genmodel:GenModel>
