@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rover" nsURI="http://www.example.org/rover" nsPrefix="rover">
-  <eClassifiers xsi:type="ecore:EClass" name="NewEClass1"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NewEClass2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rover">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
+        upperBound="-1" eType="#//Component" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//Program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//GPS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="distancesensor" eType="#//DistanceSensor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compass" eType="#//directionFacing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" upperBound="-1"
+        eType="#//Motor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="light" eType="#//Light"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GPS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DistanceSensor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingDistance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="directionFacing">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentlyFacing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Motor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Light"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//Block"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Block">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="command" lowerBound="1"
+        upperBound="-1" eType="#//Command" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tansition" lowerBound="1"
+        upperBound="-1" eType="#//Tansition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repeate" eType="#//Repeate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Transition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Start"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rotate" eType="#//Rotate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="move" eType="#//Move"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wait" eType="#//Wait"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setlightcolor" eType="#//SetLightColor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tansition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggered" eType="#//Triggered"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regular" eType="#//Regular"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetLightColor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Wait"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Move"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rotate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Repeate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Start"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Velocity" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Angel" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Length" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Position" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Triggered"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Regular"/>
 </ecore:EPackage>
