@@ -16,6 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="distancesensor" eType="#//DistanceSensor"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="compass" eType="#//directionFacing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggered" eType="#//Tansition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//Component">
     <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" upperBound="-1"
@@ -47,29 +48,41 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repeate" eType="#//Repeate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Transition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="termintate" eType="#//Terminate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Start"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rotate" eType="#//Rotate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="move" eType="#//Move"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wait" eType="#//Wait"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setlightcolor" eType="#//SetLightColor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransition" eType="#//Tansition"
+        eOpposite="#//Tansition/sourceCommand"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingTransition" eType="#//Tansition"
+        eOpposite="#//Tansition/targetCommand"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tansition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="triggered" eType="#//Triggered"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="regular" eType="#//Regular"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceCommand" eType="#//Command"
+        eOpposite="#//Command/outgoingTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetCommand" eType="#//Command"
+        eOpposite="#//Command/incomingTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparedQuantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationUsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SetLightColor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Wait"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Move"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Rotate"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Repeate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetLightColor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Wait">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Move">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="velocity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rotate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Repeate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Start"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Time" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Velocity" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Angel" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Length" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Position" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Triggered"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Regular"/>
 </ecore:EPackage>
