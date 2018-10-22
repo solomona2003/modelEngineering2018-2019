@@ -10,6 +10,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlequantity" lowerBound="1"
+        upperBound="-1" eType="#//SingleQuantity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="positionquantity" lowerBound="1"
+        upperBound="-1" eType="#//PositionQuantity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//Component">
     <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//GPS" containment="true"/>
@@ -85,4 +89,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Start"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleQuantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PositionQuantity"/>
 </ecore:EPackage>

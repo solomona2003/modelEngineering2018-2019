@@ -16,6 +16,8 @@
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Component/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Component/singlequantity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Component/positionquantity"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Sensor">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Sensor/gps"/>
@@ -82,5 +84,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Repeate/count"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Start"/>
+    <genClasses ecoreClass="rover.ecore#//SingleQuantity"/>
+    <genClasses ecoreClass="rover.ecore#//PositionQuantity"/>
   </genPackages>
 </genmodel:GenModel>
