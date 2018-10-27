@@ -27,54 +27,114 @@
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" abstract="true" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="Motor" eSuperTypes="#//Actuator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Light" eSuperTypes="#//Actuator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" lowerBound="1" eType="#//ColorKind"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GPS" eSuperTypes="#//Sensor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Compass" eSuperTypes="#//Sensor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Distance" eSuperTypes="#//Sensor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GPS" eSuperTypes="#//Sensor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" lowerBound="1"
+        eType="#//Position"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compass" eSuperTypes="#//Sensor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="angle" lowerBound="1" eType="#//Angle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Distance" eSuperTypes="#//Sensor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" lowerBound="1"
+        eType="#//Length"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Block">
     <eStructuralFeatures xsi:type="ecore:EReference" name="command" upperBound="-1"
         eType="#//Command" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
         eType="#//Transition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repeat" eType="#//Repeat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Transition"
-        eOpposite="#//Transition/command"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransition" upperBound="-1"
+        eType="#//Transition" eOpposite="#//Transition/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingTransition" upperBound="-1"
+        eType="#//Transition" eOpposite="#//Transition/target"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="#//Command"
-        eOpposite="#//Command/transition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Command" eOpposite="#//Command/outgoingTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Command" eOpposite="#//Command/incomingTransition"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SetLightColor" eSuperTypes="#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Wait" eSuperTypes="#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Move" eSuperTypes="#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetLightColor" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="light" lowerBound="1" eType="#//Light"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lightColor" eType="#//ColorKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Wait" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" eType="#//Time"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Move" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" eType="#//Motor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//Length"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="velocity" lowerBound="1"
+        eType="#//Velocity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="angle" lowerBound="1" eType="#//Angle"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Terminate" eSuperTypes="#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Repeat">
+  <eClassifiers xsi:type="ecore:EClass" name="Repeat" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Transition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="#//Command"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setlightcolor" upperBound="-1"
+        eType="#//SetLightColor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wait" upperBound="-1" eType="#//Wait"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="move" upperBound="-1" eType="#//Move"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rotate" upperBound="-1"
+        eType="#//Rotate" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TriggeredTransition" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TriggeredTransition" abstract="true"
+      eSuperTypes="#//Transition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Operator" eType="#//Operator"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DistanceSensorTrigger" eSuperTypes="#//TriggeredTransition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="distance" eType="#//Distance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="distance" lowerBound="1"
+        eType="#//Distance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" lowerBound="1"
+        eType="#//Length"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompassTrigger" eSuperTypes="#//TriggeredTransition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="compass" eType="#//Compass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compass" lowerBound="1"
+        eType="#//Compass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="angle" lowerBound="1" eType="#//Angle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GPSTrigger" eSuperTypes="#//TriggeredTransition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//GPS"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" lowerBound="1" eType="#//GPS"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" lowerBound="1"
+        eType="#//Position"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Quantity" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Smaller" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Greater" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Unequal" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Position"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Time"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Velocity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Angle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Length"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Quantity" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Position">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="X" lowerBound="1" eType="#//Length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Y" upperBound="-1" eType="#//Length"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//Quantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Velocity" eSuperTypes="#//Quantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Angle" eSuperTypes="#//Quantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Length" eSuperTypes="#//Quantity"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ColorKind">
+    <eLiterals name="None"/>
+    <eLiterals name="Red" value="1"/>
+    <eLiterals name="Green" value="2"/>
+    <eLiterals name="Blue" value="3"/>
+    <eLiterals name="Yellow" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NormalTransition" eSuperTypes="#//Transition"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Operator">
+    <eLiterals name="smaller"/>
+    <eLiterals name="greater" value="1"/>
+    <eLiterals name="equal" value="2"/>
+    <eLiterals name="unequal" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="AngleUnit"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="LengthUnit"/>
 </ecore:EPackage>

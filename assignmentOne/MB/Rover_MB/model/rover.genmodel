@@ -9,6 +9,22 @@
   <foreignModel>rover.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Rover" disposableProviderFactory="true" ecorePackage="rover.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//ColorKind">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//ColorKind/None"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//ColorKind/Red"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//ColorKind/Green"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//ColorKind/Blue"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//ColorKind/Yellow"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/smaller"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/greater"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/equal"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/unequal"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//TimeUnit"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//AngleUnit"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//LengthUnit"/>
     <genClasses ecoreClass="rover.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//System/rover"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//System/program"/>
@@ -32,49 +48,77 @@
     <genClasses ecoreClass="rover.ecore#//Light">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Light/color"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//GPS"/>
-    <genClasses ecoreClass="rover.ecore#//Compass"/>
-    <genClasses ecoreClass="rover.ecore#//Distance"/>
+    <genClasses ecoreClass="rover.ecore#//GPS">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//GPS/position"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Compass">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Compass/angle"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Distance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Distance/length"/>
+    </genClasses>
     <genClasses ecoreClass="rover.ecore#//Block">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Block/command"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Block/transition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Block/repeat"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Command">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Command/transition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Command/outgoingTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Command/incomingTransition"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Transition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Transition/command"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Transition/target"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//SetLightColor"/>
-    <genClasses ecoreClass="rover.ecore#//Wait"/>
-    <genClasses ecoreClass="rover.ecore#//Move"/>
-    <genClasses ecoreClass="rover.ecore#//Rotate"/>
+    <genClasses ecoreClass="rover.ecore#//SetLightColor">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//SetLightColor/light"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//SetLightColor/lightColor"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Wait">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Wait/time"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Move">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Move/motor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Move/length"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Move/velocity"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Rotate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Rotate/angle"/>
+    </genClasses>
     <genClasses ecoreClass="rover.ecore#//Terminate"/>
     <genClasses ecoreClass="rover.ecore#//Repeat">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Repeat/count"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/transition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/command"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/setlightcolor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/wait"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/move"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Repeat/rotate"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//TriggeredTransition"/>
+    <genClasses ecoreClass="rover.ecore#//TriggeredTransition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//TriggeredTransition/Operator"/>
+    </genClasses>
     <genClasses ecoreClass="rover.ecore#//DistanceSensorTrigger">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//DistanceSensorTrigger/distance"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//DistanceSensorTrigger/length"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//CompassTrigger">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//CompassTrigger/compass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//CompassTrigger/angle"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//GPSTrigger">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//GPSTrigger/gps"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//GPSTrigger/position"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//Operator"/>
-    <genClasses ecoreClass="rover.ecore#//Quantity"/>
-    <genClasses ecoreClass="rover.ecore#//Smaller"/>
-    <genClasses ecoreClass="rover.ecore#//Greater"/>
-    <genClasses ecoreClass="rover.ecore#//Equal"/>
-    <genClasses ecoreClass="rover.ecore#//Unequal"/>
-    <genClasses ecoreClass="rover.ecore#//Position"/>
+    <genClasses ecoreClass="rover.ecore#//Quantity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Quantity/value"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Position">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/X"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/Y"/>
+    </genClasses>
     <genClasses ecoreClass="rover.ecore#//Time"/>
     <genClasses ecoreClass="rover.ecore#//Velocity"/>
     <genClasses ecoreClass="rover.ecore#//Angle"/>
     <genClasses ecoreClass="rover.ecore#//Length"/>
+    <genClasses ecoreClass="rover.ecore#//NormalTransition"/>
   </genPackages>
 </genmodel:GenModel>

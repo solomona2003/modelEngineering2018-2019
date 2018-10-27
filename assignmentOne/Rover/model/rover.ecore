@@ -6,39 +6,25 @@
         upperBound="-1" eType="#//Component" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//Program"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="singlequantity" lowerBound="1"
-        upperBound="-1" eType="#//SingleQuantity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="positionquantity" lowerBound="1"
-        upperBound="-1" eType="#//PositionQuantity"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//GPS" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="distancesensor" eType="#//DistanceSensor"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="compass" eType="#//directionFacing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensor" abstract="true" eSuperTypes="#//Component">
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggered" eType="#//Tansition"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Actuator" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" upperBound="-1"
-        eType="#//Motor" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="light" eType="#//Light"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GPS">
+  <eClassifiers xsi:type="ecore:EClass" name="Actuator" abstract="true" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GPS" eSuperTypes="#//Sensor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentPosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DistanceSensor">
+  <eClassifiers xsi:type="ecore:EClass" name="DistanceSensor" eSuperTypes="#//Sensor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingDistance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="directionFacing">
+  <eClassifiers xsi:type="ecore:EClass" name="directionFacing" eSuperTypes="#//Sensor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentlyFacing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Motor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Light"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Motor" eSuperTypes="#//Actuator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Light" eSuperTypes="#//Actuator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Program">
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//Block"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -52,8 +38,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repeate" eType="#//Repeate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="termintate" eType="#//Terminate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//Start"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rotate" eType="#//Rotate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="move" eType="#//Move"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wait" eType="#//Wait"/>
@@ -84,11 +68,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Rotate">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="angel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Terminate"/>
   <eClassifiers xsi:type="ecore:EClass" name="Repeate">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Start"/>
   <eClassifiers xsi:type="ecore:EClass" name="SingleQuantity"/>
   <eClassifiers xsi:type="ecore:EClass" name="PositionQuantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compass" eSuperTypes="#//Sensor"/>
 </ecore:EPackage>
