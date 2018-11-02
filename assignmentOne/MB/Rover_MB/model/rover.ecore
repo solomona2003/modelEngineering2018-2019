@@ -113,13 +113,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="Position">
     <eStructuralFeatures xsi:type="ecore:EReference" name="X" lowerBound="1" eType="#//Length"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Y" upperBound="-1" eType="#//Length"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Y" lowerBound="1" eType="#//Length"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//Quantity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Velocity" eSuperTypes="#//Quantity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Angle" eSuperTypes="#//Quantity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Length" eSuperTypes="#//Quantity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//Quantity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeUnit" eType="#//TimeUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Velocity" eSuperTypes="#//Quantity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="velocityUnit" eType="#//VelocityUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Angle" eSuperTypes="#//Quantity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angleUnit" eType="#//AngleUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Length" eSuperTypes="#//Quantity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lengthUnit" eType="#//LengthUnit"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ColorKind">
     <eLiterals name="None"/>
     <eLiterals name="Red" value="1"/>
@@ -134,7 +142,24 @@
     <eLiterals name="equal" value="2"/>
     <eLiterals name="unequal" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="AngleUnit"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="LengthUnit"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit">
+    <eLiterals name="nanoseconds"/>
+    <eLiterals name="milliseconds" value="1"/>
+    <eLiterals name="seconds" value="2"/>
+    <eLiterals name="minutes" value="3"/>
+    <eLiterals name="hours" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AngleUnit">
+    <eLiterals name="radians"/>
+    <eLiterals name="degrees" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LengthUnit">
+    <eLiterals name="millimeters"/>
+    <eLiterals name="centimeters" value="1"/>
+    <eLiterals name="meters" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VelocityUnit">
+    <eLiterals name="millimeters-per-second"/>
+    <eLiterals name="centimeters-per-second" value="1"/>
+  </eClassifiers>
 </ecore:EPackage>
