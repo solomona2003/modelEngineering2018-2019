@@ -38,6 +38,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Program/rover"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Program/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Program/block"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Program/quantity"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Component/name"/>
