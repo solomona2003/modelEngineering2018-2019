@@ -15,19 +15,19 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rover">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="constraint1_atLeastOneMotor"/>
+      <details key="constraints" value="OCL_constraint01"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="constraint1_atLeastOneMotor" value="self.motor -> size () > 0"/>
+      <details key="OCL_constraint01" value="self.component -> select(c : Component | c.oclIsTypeOf(Motor)) -> size() > 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1" upperBound="-1" eType="#//Component" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" upperBound="-1" eType="#//Motor" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Program">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rover" lowerBound="1" eType="#//Rover"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//Block" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" upperBound="-1" eType="#//Quantity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
