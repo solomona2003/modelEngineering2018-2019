@@ -647,22 +647,6 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Cx9mOtK5Eeigtu5dkhfUOQ" id="(1.0,0.6836734693877551)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Cx9mO9K5Eeigtu5dkhfUOQ" id="(0.0,0.6122448979591837)"/>
         </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_KLpJgNK5Eeigtu5dkhfUOQ" type="4001" element="_KLdjUNK5Eeigtu5dkhfUOQ" source="_Zey1kM36EeikHJKc67MIPg" target="_ciL4cNK4Eeigtu5dkhfUOQ">
-          <children xmi:type="notation:Node" xmi:id="_KLpJhNK5Eeigtu5dkhfUOQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KLpJhdK5Eeigtu5dkhfUOQ" x="-190" y="22"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_KLpJhtK5Eeigtu5dkhfUOQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KLpJh9K5Eeigtu5dkhfUOQ" x="-1" y="18"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_KLpJiNK5Eeigtu5dkhfUOQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KLpJidK5Eeigtu5dkhfUOQ" x="-150" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_KLpJgdK5Eeigtu5dkhfUOQ" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_KLpJgtK5Eeigtu5dkhfUOQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KLpJg9K5Eeigtu5dkhfUOQ" points="[47, -44, -188, -312]$[109, -44, -126, -312]$[109, 318, -126, 50]$[169, 318, -66, 50]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KLpJitK5Eeigtu5dkhfUOQ" id="(0.6016949152542372,1.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KLpJi9K5Eeigtu5dkhfUOQ" id="(0.559322033898305,0.0)"/>
-        </edges>
         <edges xmi:type="notation:Edge" xmi:id="_nDHrINK5Eeigtu5dkhfUOQ" type="4001" element="_nC5osNK5Eeigtu5dkhfUOQ" source="_ex_icNK5Eeigtu5dkhfUOQ" target="_rIsEQNK3Eeigtu5dkhfUOQ">
           <children xmi:type="notation:Node" xmi:id="_nDHrJNK5Eeigtu5dkhfUOQ" type="6001">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nDHrJdK5Eeigtu5dkhfUOQ" y="-10"/>
@@ -1394,7 +1378,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ZeodgM36EeikHJKc67MIPg" name="Rover" tooltipText="" outgoingEdges="_Cxz1MNK5Eeigtu5dkhfUOQ _KLdjUNK5Eeigtu5dkhfUOQ" incomingEdges="_j6cxYNK2Eeigtu5dkhfUOQ _w0atcNK2Eeigtu5dkhfUOQ" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ZeodgM36EeikHJKc67MIPg" name="Rover" tooltipText="&#xA;ERROR : The «invariant» 'rover::Rover::constraint1_atLeastOneMotor' is invalid: 'self.motor -> size () > 0'&#xA;1: Unresolved Property 'rover::Rover::motor'&#xA;ERROR : 1: Unresolved Property 'rover::Rover::motor'" outgoingEdges="_Cxz1MNK5Eeigtu5dkhfUOQ" incomingEdges="_j6cxYNK2Eeigtu5dkhfUOQ _w0atcNK2Eeigtu5dkhfUOQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="rover.ecore#//Rover"/>
       <semanticElements xmi:type="ecore:EClass" href="rover.ecore#//Rover"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1533,7 +1517,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ciG_8NK4Eeigtu5dkhfUOQ" name="Motor" tooltipText="" outgoingEdges="_8dmsMNK4Eeigtu5dkhfUOQ" incomingEdges="_KLdjUNK5Eeigtu5dkhfUOQ _3rKecNnrEeiEuJPaVp5WwQ" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ciG_8NK4Eeigtu5dkhfUOQ" name="Motor" tooltipText="" outgoingEdges="_8dmsMNK4Eeigtu5dkhfUOQ" incomingEdges="_3rKecNnrEeiEuJPaVp5WwQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="rover.ecore#//Motor"/>
       <semanticElements xmi:type="ecore:EClass" href="rover.ecore#//Motor"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1595,17 +1579,6 @@
           <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_Dn8L8tK5Eeigtu5dkhfUOQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_KLdjUNK5Eeigtu5dkhfUOQ" name="[1..*] motor" sourceNode="_ZeodgM36EeikHJKc67MIPg" targetNode="_ciG_8NK4Eeigtu5dkhfUOQ">
-      <target xmi:type="ecore:EReference" href="rover.ecore#//Rover/motor"/>
-      <semanticElements xmi:type="ecore:EReference" href="rover.ecore#//Rover/motor"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_QAVsANK5Eeigtu5dkhfUOQ" description="_lmHpANK2Eeigtu5dkhfUOQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_QAVsAdK5Eeigtu5dkhfUOQ" showIcon="false">
-          <labelFormat>bold</labelFormat>
-        </centerLabelStyle>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_QAVsAtK5Eeigtu5dkhfUOQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
