@@ -7,17 +7,40 @@
     xsi:schemaLocation="http://www.example.org/rover rover.ecore">
   <rover>
     <component
-        xsi:type="rover:Motor"
-        name="test"/>
-    <component
         xsi:type="rover:GPS"
         name="test"/>
+    <component
+        xsi:type="rover:Motor"/>
   </rover>
   <program>
     <block>
       <command
           xsi:type="rover:Repeat"
           count="2"/>
+      <command
+          xsi:type="rover:Terminate"/>
+      <command
+          xsi:type="rover:Rotate"
+          outgoingTransition="//@program.0/@block/@transition.0 //@program.0/@block/@transition.1"
+          angle="//@program.0/@quantity.0"/>
+      <command
+          xsi:type="rover:Rotate"
+          incomingTransition="//@program.0/@block/@transition.0 //@program.0/@block/@transition.1"
+          angle="//@program.0/@quantity.1"/>
+      <transition
+          xsi:type="rover:NormalTransition"
+          source="//@program.0/@block/@command.2"
+          target="//@program.0/@block/@command.3"/>
+      <transition
+          xsi:type="rover:NormalTransition"
+          source="//@program.0/@block/@command.2"
+          target="//@program.0/@block/@command.3"/>
     </block>
+    <quantity
+        xsi:type="rover:Angle"
+        value="20.0"/>
+    <quantity
+        xsi:type="rover:Angle"
+        value="50.0"/>
   </program>
 </rover:System>

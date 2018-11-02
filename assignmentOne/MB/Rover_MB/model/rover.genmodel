@@ -39,8 +39,8 @@
       <genEnumLiterals ecoreEnumLiteral="rover.ecore#//LengthUnit/meters"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//VelocityUnit">
-      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/millimeters-per-second"/>
-      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/centimeters-per-second"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/millimeters_per_second"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/centimeters_per_second"/>
     </genEnums>
     <genClasses ecoreClass="rover.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//System/rover"/>
@@ -125,12 +125,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//GPSTrigger/gps"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//GPSTrigger/position"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//Quantity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Quantity/value"/>
+    <genClasses ecoreClass="rover.ecore#//SingleQuantity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//SingleQuantity/value"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Position">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/X"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/Y"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Position/X"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rover.ecore#//Position/Y"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//Time">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Time/timeUnit"/>
@@ -145,5 +145,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Length/lengthUnit"/>
     </genClasses>
     <genClasses ecoreClass="rover.ecore#//NormalTransition"/>
+    <genClasses ecoreClass="rover.ecore#//Quantity"/>
   </genPackages>
 </genmodel:GenModel>

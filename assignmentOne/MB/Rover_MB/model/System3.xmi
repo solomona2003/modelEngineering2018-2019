@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rover:System
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:rover="http://www.example.org/rover"
+    xsi:schemaLocation="http://www.example.org/rover rover.ecore">
+  <rover/>
+  <program rover="//@rover.0">
+    <block>
+      <command
+          xsi:type="rover:Move"
+          outgoingTransition="//@program.0/@block/@transition.0"/>
+      <transition
+          xsi:type="rover:GPSTrigger"
+          source="//@program.0/@block/@command.0"/>
+    </block>
+    <quantity
+        xsi:type="rover:Length"
+        value="20.0"/>
+    <quantity
+        xsi:type="rover:Length"
+        value="50.0"/>
+    <quantity
+        xsi:type="rover:Velocity"/>
+  </program>
+</rover:System>
