@@ -22,9 +22,26 @@
       <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/equal"/>
       <genEnumLiterals ecoreEnumLiteral="rover.ecore#//Operator/unequal"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//TimeUnit"/>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//AngleUnit"/>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//LengthUnit"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//TimeUnit">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//TimeUnit/nanoseconds"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//TimeUnit/milliseconds"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//TimeUnit/seconds"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//TimeUnit/minutes"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//TimeUnit/hours"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//AngleUnit">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//AngleUnit/radians"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//AngleUnit/degrees"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//LengthUnit">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//LengthUnit/millimeters"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//LengthUnit/centimeters"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//LengthUnit/meters"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rover.ecore#//VelocityUnit">
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/millimeters-per-second"/>
+      <genEnumLiterals ecoreEnumLiteral="rover.ecore#//VelocityUnit/centimeters-per-second"/>
+    </genEnums>
     <genClasses ecoreClass="rover.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//System/rover"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//System/program"/>
@@ -115,10 +132,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/X"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rover.ecore#//Position/Y"/>
     </genClasses>
-    <genClasses ecoreClass="rover.ecore#//Time"/>
-    <genClasses ecoreClass="rover.ecore#//Velocity"/>
-    <genClasses ecoreClass="rover.ecore#//Angle"/>
-    <genClasses ecoreClass="rover.ecore#//Length"/>
+    <genClasses ecoreClass="rover.ecore#//Time">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Time/timeUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Velocity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Velocity/velocityUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Angle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Angle/angleUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="rover.ecore#//Length">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rover.ecore#//Length/lengthUnit"/>
+    </genClasses>
     <genClasses ecoreClass="rover.ecore#//NormalTransition"/>
   </genPackages>
 </genmodel:GenModel>
