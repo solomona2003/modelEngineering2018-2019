@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated rover -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="rover.presentation.RoverModelWizardID"
+            name="%_UI_RoverModelWizard_label"
+            class="rover.presentation.RoverModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RoverModelFile.gif">
+         <description>%_UI_RoverModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated rover -->
+      <editor
+            id="rover.presentation.RoverEditorID"
+            name="%_UI_RoverEditor_label"
+            icon="icons/full/obj16/RoverModelFile.gif"
+            extensions="rover"
+            class="rover.presentation.RoverEditor"
+            contributorClass="rover.presentation.RoverActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

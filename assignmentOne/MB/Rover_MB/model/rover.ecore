@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rover" nsURI="http://www.example.org/rover" nsPrefix="rover">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="System">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rover" lowerBound="1" upperBound="-1"
         eType="#//Rover" containment="true"/>
@@ -8,6 +16,12 @@
         upperBound="-1" eType="#//Program" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rover">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="constraint1_atLeastOneMotor"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="constraint1_atLeastOneMotor" value="self.motor -> size () > 0"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
         upperBound="-1" eType="#//Component" containment="true"/>
@@ -16,12 +30,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Program">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rover" lowerBound="1" eType="#//Rover"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//Block"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="quantity" upperBound="-1"
+        eType="#//Quantity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actuator" abstract="true" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" abstract="true" eSuperTypes="#//Component"/>
@@ -41,6 +57,12 @@
         eType="#//Length"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Block">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OCL_constraint_03"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OCL_constraint_03" value="self.command -> select(t : Command | t.oclIsTypeOf(Terminate) ) -> size() &lt;= 1"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="command" upperBound="-1"
         eType="#//Command" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
@@ -73,11 +95,33 @@
         eType="#//Velocity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OCL_constraint_02_2"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="invariant OCL_constraint_02_1 : self.outgoingTransition.target -> forAll(c | c.oclType &lt;> Rover);invariant OCL_constraint_02_1 : self.outgoingTransition.target &lt;> self.oclIsTypeOf(Rotate) ;"/>
+      </eAnnotations>
+      <details key="OCL_constraint_02_2" value="self.incomingTransition.source &lt;> self"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="angle" lowerBound="1" eType="#//Angle"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Terminate" eSuperTypes="#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminate" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OCL_constraint_04"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OCL_constraint_04" value="self.outgoingTransition -> size() = 0"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Repeat" eSuperTypes="#//Command">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OCL_constraint_05"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OCL_constraint_05" value="self.count > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setlightcolor" upperBound="-1"
         eType="#//SetLightColor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wait" upperBound="-1" eType="#//Wait"
@@ -108,7 +152,7 @@
         eType="#//Position"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Quantity" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Position">
     <eStructuralFeatures xsi:type="ecore:EReference" name="X" lowerBound="1" eType="#//Length"
