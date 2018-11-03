@@ -15,10 +15,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rover">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint01 OCL_constraint01"/>
+      <details key="constraints" value="OCL_constraint01 OCL_constraint01 OCL_constraint06"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="OCL_constraint01" value="self.component -> select(c : Component | c.oclIsTypeOf(Motor)) -> size() > 0"/>
+      <details key="OCL_constraint06" value="self.component ->forAll(c1 | self.component-> forAll(c2 |c1 &lt;> c2 implies c1.name &lt;> c2.name))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1" upperBound="-1" eType="#//Component" containment="true"/>
@@ -49,10 +50,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Block">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_03 OCL_constraint_02"/>
+      <details key="constraints" value="OCL_constraint_02 OCL_constraint_03 OCL_constraint_02 OCL_constraint_08"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="OCL_constraint_02" value="self.command -> select(t : Command | t.oclIsTypeOf(Terminate) ) -> size() &lt;= 1"/>
+      <details key="OCL_constraint_08" value="self.command -> select(c:Command | c.incomingTransition -> size() = 0) -> size() = 1"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="command" upperBound="-1" eType="#//Command" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1" eType="#//Transition" containment="true"/>
@@ -60,7 +62,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_02_2"/>
+      <details key="constraints" value="OCL_constraint_02_2 OCL_constraint_02_2"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransition" upperBound="-1" eType="#//Transition" eOpposite="#//Transition/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingTransition" upperBound="-1" eType="#//Transition" eOpposite="#//Transition/target"/>
@@ -78,10 +80,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Move" eSuperTypes="#//Command">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_07_01"/>
+      <details key="constraints" value="OCL_constraint_07_01 OCL_constraint_07_01"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OCL_constraint_07_01" value="if self.length = null then self.outgoingTransition -> forAll(t:Transition | t.oclIsKindOf(TriggeredTransition)) else false endif"/>
+      <details key="OCL_constraint_07_01" value="if self.length = null then self.outgoingTransition -> forAll(t:Transition | t.oclIsKindOf(TriggeredTransition)) else true endif"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="motor" lowerBound="1" eType="#//Motor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//Length"/>
@@ -89,7 +91,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_03_01 OCL_constraint_03_02"/>
+      <details key="constraints" value="OCL_constraint_03_01 OCL_constraint_03_02 OCL_constraint_03_01 OCL_constraint_03_02"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="OCL_constraint_03_01" value="self.outgoingTransition -> select(t : Transition | t.target.oclIsTypeOf(Rotate)) -> size() = 0"/>
@@ -107,11 +109,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Repeat" eSuperTypes="#//Command">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_05 OCL_constraint_06 OCL_constraint_07_02"/>
+      <details key="constraints" value="OCL_constraint_06 OCL_constraint_07_02 OCL_constraint_05 OCL_constraint_05 OCL_constraint_07_02"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OCL_constraint_06" value="self.count > 0"/>
-      <details key="OCL_constraint_07_02" value="if self.count = -1 then self.outgoingTransition -> forAll(t:Transition | t.oclIsKindOf(TriggeredTransition)) else false endif"/>
+      <details key="OCL_constraint_05" value="self.count > 0"/>
+      <details key="OCL_constraint_07_02" value="if self.count = -1 then self.outgoingTransition -> forAll(t:Transition | t.oclIsKindOf(TriggeredTransition)) else true endif"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setlightcolor" upperBound="-1" eType="#//SetLightColor" containment="true"/>
@@ -142,14 +144,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="Y" lowerBound="1" eType="#//Length"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//SingleQuantity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OCL_constraint_05"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OCL_constraint_05" value="self.value > 0"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeUnit" eType="#//TimeUnit"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Velocity" eSuperTypes="#//SingleQuantity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OCL_constraint_08"/>
+      <details key="constraints" value="OCL_constraint_08 OCL_constraint_05"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OCL_constraint_08" value="self.value &lt;> 0"/>
+      <details key="OCL_constraint_05" value="self.value &lt;> 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="velocityUnit" eType="#//VelocityUnit"/>
   </eClassifiers>
